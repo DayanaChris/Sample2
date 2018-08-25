@@ -35,15 +35,15 @@ class PostsController extends Controller
         //$posts = Post::all(); // post all the data from this model
         // $posts = Post::orderBy('title','desc' )->get(); // post all the data from this model
         //return Post::where('title','Post Two' )->get(); // post all the data from this model
-        
+
 
         // // Take and show one post only
-        // $posts = Post::orderBy('title','desc' )->take(1)->get(); 
+        // $posts = Post::orderBy('title','desc' )->take(1)->get();
 
 
         //$posts = DB::select('SELECT * FROM posts'); // using the DB query
         $posts = Post::orderBy('created_at','desc' )->paginate(10); // paginate by 1 . 1 post per page.
-        
+
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -72,7 +72,23 @@ class PostsController extends Controller
             'cover_image' => 'image|nullable|max:1999'
 
         ]);
-        
+
+        //handle file upload
+        if($request->hasFile('cover_image')){
+           //get filename with the extension
+           $filenameWithExt= $request->file('cover_image')->getClientOriginalName();
+           //get just filename
+
+           $filename= pathinfo($filenameWithExt, PATHINFO_FILENAME);
+           //get just extension
+           $extension = $request->file('cover_image')-> getClientOriginalExtension();
+           //filename to store
+           $fileNameToStore = $filename.'_'.time().'_'.$extension;
+           //upload the image
+           $path = $request ->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+
+       }
+
 
         //create post
         $post = new Post;
@@ -101,7 +117,15 @@ class PostsController extends Controller
     }
 
 
-    
+    public function shows($id)
+    {
+        //
+        $post=  "SELECT * FROM `post`";
+        return view('posts.show')->with('post', $post);
+    }
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -149,9 +173,9 @@ class PostsController extends Controller
             $fileNameToStore = $filename.'_'.time().'_'.$extension;
             //upload the image
             $path = $request ->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
-        
-        } 
-        
+
+        }
+
         //create post
         $post =  Post::find($id);
         $post->title = $request ->input('title');
@@ -187,7 +211,7 @@ class PostsController extends Controller
 
 
         }
-        
+
         $post->delete();
 
         return redirect('/posts')->with('success', 'Post deleted');
@@ -196,6 +220,6 @@ class PostsController extends Controller
     }
 
 
-  
-    
+
+
 }

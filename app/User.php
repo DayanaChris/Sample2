@@ -7,6 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+  protected $table= 'user';
+  protected $primaryKey = 'user_id';
+
     use Notifiable;
 
     /**
@@ -28,8 +31,8 @@ class User extends Authenticatable
     ];
 
 
-    // tutorial 10
-    public function posts(){
-        return $this->hasMany('App\Post');
+    public function result(){
+        return $this-> hasOne('App\Result');
     }
+
 }

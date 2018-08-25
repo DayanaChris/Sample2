@@ -11,32 +11,22 @@
 |
 */
 
+// Route::get('/', function () {return view('welcome');});
 
-/*
-Route::get('/hello', function () {
-    // return view('welcome');
-    return '<h1>Hello World</h1>';
-});
-
-
-
-
-// http://sample2.dev/users/dianne
-Route::get('/users/{id}', function ($id) {
-    return 'This is user ' .$id;
-});
-
-Route::get('/users/{id}/{name}', function ($id,$name) {
-    return 'This is user ' .$name. 'with an id of ' .$id;
-});
-
-*/
+// Route::get('/', function () {return view('welcome');});
+// Route::get('/', function () {
+//     return view('master');
+// });
 Route::get('/','PagesController@index');
+// Route::get('/', function () {
+//     return view('master');
+// });
+
 Route::get('/about','PagesController@about'); //http://sample2.dev/about
 Route::get('/services','PagesController@services'); //http://sample2.dev/services
 Route::get('/contact','PagesController@contact'); //http://sample2.dev/services
-Route::get('/sendemail', 'SendEmail@fn_sendmail');
-Route::get('/register2', 'RegisterController@validator');
+// Route::get('/sendemail', 'SendEmail@fn_sendmail');
+// Route::get('/register2', 'RegisterController@validator');
 
 
 Route::get('/main_menu', 'PagesController@main_menu');
@@ -55,60 +45,38 @@ Route::get('/lesson_numbers', 'PagesController@lesson_numbers');
 Route::get('/lesson_shapes', 'PagesController@lesson_shapes');
 
 
-Route::get('/quiz_alphabetsA', 'PagesController@quiz_alphabetsA'); 
+Route::get('/quiz_alphabetsA', 'PagesController@quiz_alphabetsA');
 Route::get('/lesson_alphabetsA', 'PagesController@lesson_alphabetsA');
-
-Route::get('/aaquiz', 'PagesController@aaquiz');
-Route::post('/aaquiz', 'PagesController@aaquiz');
+Route::get('/manage', 'PagesController@manage');
 
 
-
-
-
-
-Route::get('/aafinal', 'PagesController@aafinal');
-Route::get('/aaaa', 'PagesController@aaaa');
-Route::get('/aaprocess', 'PagesController@aaprocess');
-
-Route::get('/aaindex', 'PagesController@aaindex');
-Route::get('/SAMPLE', 'PagesController@SAMPLE');
-
-
-
-
-// Route::get('/aaquiz', 'QuizController@aaquiz')->name('aaquiz.crete');
-// Route::post('/aaquiz', 'QuizController@aaquiz')->name('aaquiz.store');
-
-// Route::get('/aafinal', 'QuizController@aafinal');
-// Route::get('/aaaa', 'QuizController@aaaa');
-
-
-
-Route::post('/aaaa', 'Controllername@aaaa')->name('aaaa');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::resource('posts', 'PostsController');
 Auth::routes();
-Route::get('/dashboard', 'DashboardController@index');
+Route::resource('posts', 'PostsController');
+
+Route::resource('levels', 'LevelsController');
+Route::resource('categorys', 'CategorysController');
+Route::resource('questionnaires', 'QuestionnairesController');
+
+
+
+Route::get('/questionnaires.dashboard', 'QuestionnairesController@dashboard');
+
+Route::get('/questionnaires.getquestion', 'QuestionnairesController@getquestion');
+Route::get('/questionnaires.dashdash', 'QuestionnairesController@dashdash');
+
+
+
+
+Route::get('/categorys.dashboard', 'CategorysController@dashboard');
+Route::get('/levels.dashboard', 'LevelsController@dashboard');
+
+
+
+
+Route::get('/level_menu', 'LevelsController@menu');
+Route::get('/questionnaires_menu', 'QuestionnairesController@menu');
+Route::get('/category_menu', 'CategorysController@menu');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

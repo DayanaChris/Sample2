@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCoverImageToPosts extends Migration
+class CreateLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,16 @@ class AddCoverImageToPosts extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('posts',function($table){
-            $table->string('cover_image');
-        });
+      Schema::dropIfExists('levels');
+
+      Schema::create('levels', function (Blueprint $table) {
+          $table->increments('level_id');
+          $table->string('level_name');
+          $table->string('level_image');
+
+
+
+});
     }
 
     /**
@@ -26,9 +32,6 @@ class AddCoverImageToPosts extends Migration
      */
     public function down()
     {
-        //
-        Schema::table('posts',function($table){
-            $table->dropColumn('cover_image');
-        });
+        Schema::dropIfExists('levels');
     }
 }

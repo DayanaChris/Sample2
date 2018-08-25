@@ -1,69 +1,7 @@
-{{-- @extends('layouts.app')
+@extends('layouts.app')
 
-@section('content') --}}
-
-
-
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-   
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
-    <style>
-            body {
-                /* background-image: url("https://images.pexels.com/photos/35807/rose-red-rose-romantic-rose-bloom.jpg?auto=compress&cs=tinysrgb&h=350"); */
-
-                background-image: url("SPEDEMY/login.png");
-                background-repeat: no-repeat;
-
-
-                background-color: #fff;
-
-
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-            </style>
-
-</head>
-
-
-<body >
-    <div id="app">
-        
-
-        {{-- <main class="py-4"> --}}
-
-            @include('inc.navbar')
-            <div class="container">
-                @include('inc.messages')
-                @yield('content')
-            </div>
-        {{-- </main> --}}
-    </div>
-
-
-
-<div class="container" style="margin-top: 10%; margin-bottom: 10%;">
+@section('content')
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -136,12 +74,6 @@
         </div>
     </div>
 </div>
-{{-- @endsection --}}
+@endsection
 
-
-
-
-
-
-</body>
-</html>
+@include('inc.footer')

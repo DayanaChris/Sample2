@@ -1,29 +1,12 @@
-@extends('layouts.app')
-
-@section('content')
-
-
-
-
-<img src="SPEDEMY/main.png" alt="welcome" width= "100%" height="100%" style="margin=0; margin-bottom: 7%;">
-
-
-
-
-
-
-
 <div class="footer">
-    <nav class="navbar navbar-expand-md   navbar-laravel navbar-dark " style=" background-color: #5A2971;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    " >
+                <nav class="navbar navbar-expand-md   navbar-laravel navbar-dark " style=" background-color: #5A2971;
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                " >
 
-    <div class="container">
-            {{-- style="background:#1D1C1C;" --}}
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContentfooter" aria-controls="navbarSupportedContentfooter" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
               <span class="navbar-toggler-icon"></span>
           </button>
@@ -39,10 +22,6 @@
                 <li class="nav-item"> <a class="nav-link" href="/services">Services</a> </li>
                 <li class="nav-item"> <a class="nav-link" href="/posts">Blog</a> </li>
               </ul>
-          </div>
-  </nav>
+            </div>
+    </nav>
 </div>
-
-@endsection
-
- 
